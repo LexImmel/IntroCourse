@@ -5,10 +5,9 @@ public class Main {
         return employee;
     }
 
-    private static  Employee[] emp = new Employee[10];
+    private static Employee[] emp = new Employee[10];
 
     public static void main(String[] args) {
-
         emp[0] = new Employee("Волков", "Игорь", "Петрович", 1, 200_000);
         emp[1] = new Employee("Драник", "Влад", "Константинович", 2, 150_000);
         emp[2] = new Employee("Фрай", "Макс", "Филиппович", 3, 280_000);
@@ -19,6 +18,7 @@ public class Main {
         emp[7] = new Employee("Этвуд", "Мария", "Вадимовна", 3, 245_000);
         emp[8] = new Employee("Веркин", "Эдуард", "Владимирович", 4, 155_000);
         emp[9] = new Employee("Горох", "Надежда", "Яковлевна", 5, 200_000);
+
 
         System.out.println("Основная часть.");
 
@@ -36,11 +36,12 @@ public class Main {
 
         System.out.println("Повышенная сложность.");
         int setPercent = 15; //Процент для подсчета ЗП
-        int setDept = 1; //Номер департамента для подсчетов
         countIndexedSalary(setPercent);//Подсчет относительно указанного процента
         printAllEmployees();
+        int setDept = 1; //Номер департамента для подсчетов
         //Все данные ниже можно увидеть о каждом отделе, указав сверху номер отдела
         System.out.println("Зарплата отдела " + setDept + " равна: " + salaryOfDept(setDept));
+        System.out.println("Средняя зарплата отдела " + setDept + " равна: " + deptAvgSalary(setDept));
         System.out.println("Минимальная зп в отделе " + setDept + " равна: " + minSalaryOfDept(setDept));
         System.out.println("Максимальная зп в отделе " + setDept + " равна: " + maxSalaryOfDept(setDept));
         countIndSalaryDept(setDept, setPercent);
@@ -130,6 +131,17 @@ public class Main {
             }
         }
         return sum;
+    }
+
+    public static int deptAvgSalary(int dept) {
+        int count = 0;
+        for (Employee employee : emp) {
+            if (employee.getDepartment() == dept) {
+                count++;
+
+            }
+        }
+        return salaryOfDept(dept) / count;
     }
 
     //Мин зп в отделе
