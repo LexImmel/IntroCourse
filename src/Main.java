@@ -133,15 +133,18 @@ public class Main {
         return sum;
     }
 
-    public static int deptAvgSalary(int dept) {
+    public static int deptEmployeeCount(int dept) {
         int count = 0;
         for (Employee employee : emp) {
             if (employee.getDepartment() == dept) {
                 count++;
-
             }
         }
-        return salaryOfDept(dept) / count;
+        return count;
+    }
+
+    public static int deptAvgSalary(int dept) {
+        return salaryOfDept(dept) / deptEmployeeCount(dept);
     }
 
     //Мин зп в отделе
